@@ -45,9 +45,11 @@ namespace AcmGamesBot
             .AddTransient<AcmBot>()
             .AddTransient<MessageHandler>()
             .AddSingleton(st);
-            
+
+            var x = new Emoji("\u2764");
+
             DIContainer = sc.BuildServiceProvider();
-            
+
             try
             {
                 TokenUtils.ValidateToken(TokenType.Bot, st.Token);

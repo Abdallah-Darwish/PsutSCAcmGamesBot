@@ -59,7 +59,6 @@ namespace AcmGamesBot.Commands
         {
             // Don't process the command if it was a system message
             if (messageParam is not SocketUserMessage message) return;
-
             int argPos = 0;
 
             if (!message.HasCharPrefix('!', ref argPos) && !message.HasMentionPrefix(_client!.CurrentUser, ref argPos))
