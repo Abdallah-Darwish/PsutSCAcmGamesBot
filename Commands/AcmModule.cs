@@ -10,6 +10,10 @@ using Serilog;
 
 namespace AcmGamesBot.Commands
 {
+    /// <summary>
+    /// All of the bot commands reside here.
+    /// </summary>
+    //You can change command group name HERE
     [Group("acm")]
     [RequireBotPermission(GuildPermission.MentionEveryone | GuildPermission.MoveMembers | GuildPermission.SendMessages | GuildPermission.ViewChannel)]
     [CheckRole]
@@ -28,7 +32,10 @@ namespace AcmGamesBot.Commands
         {
             var commands = _commandService.Commands.ToArray();
             var embedBuilder = new EmbedBuilder();
-            embedBuilder.WithColor(Color.Blue).WithTitle("Available Commands").WithFooter("Texts with spaces must be enclosed within double quotes.");
+            embedBuilder
+            .WithColor(Color.Blue)
+            .WithTitle("Available Commands")
+            .WithFooter("Texts with spaces must be enclosed within double quotes.");
             var cmdSb = new StringBuilder();
             foreach (CommandInfo command in commands)
             {
@@ -36,14 +43,22 @@ namespace AcmGamesBot.Commands
                 cmdSb.AppendLine(command.Summary).AppendLine();
                 if (!string.IsNullOrWhiteSpace(command.Remarks))
                 {
-                    cmdSb.Append("Remarks: ").AppendLine(command.Remarks).AppendLine();
+                    cmdSb.Append("Remarks: ")
+                    .AppendLine(command.Remarks)
+                    .AppendLine();
                 }
                 if (command.Parameters.Count != 0)
                 {
                     cmdSb.AppendLine("Parameters:");
                     foreach (var par in command.Parameters)
                     {
-                        cmdSb.Append(par.Name).Append(par.IsOptional ? "[Optional]" : "").Append('<').Append(par.Type.Name).Append(">: ").AppendLine(par.Summary);
+                        cmdSb
+                        .Append(par.Name)
+                        .Append(par.IsOptional ? "[Optional]" : "")
+                        .Append('<')
+                        .Append(par.Type.Name)
+                        .Append(">: ")
+                        .AppendLine(par.Summary);
                     }
                     cmdSb.AppendLine();
                 }
@@ -51,7 +66,7 @@ namespace AcmGamesBot.Commands
                 embedBuilder.AddField(command.Name, cmdSb.ToString());
             }
             await ReplyAsync(embed: embedBuilder.Build()).ConfigureAwait(false);
-            _logger.Information("User {username} in {server} asked for help, replied with {count} commands.",
+            _logger.Information("User {username} in {server} asked for help, I replied with {count} commands.",
             Context.User.Username, Context.Guild.Name, commands.Length);
         }
 
@@ -72,10 +87,10 @@ namespace AcmGamesBot.Commands
             [Summary("Category of the channels to divide players among them.")]
             string channelsCategory,
             [InRange(1)]
-            [Summary("Size of each players group")]
+            [Summary("Size of each players group.")]
             int groupSize,
             [InRange(1)]
-            [Summary("Time to wait until all players react to the message.")]
+            [Summary("Seconds to wait until all players react to the message, default value is 120.")]
             int timeout = 120)
         {
             _logger.Information("User {username} from {server} wants to play {gameName}.", Context.User.Username, Context.Guild.Name, gameName);
@@ -92,7 +107,7 @@ namespace AcmGamesBot.Commands
                     var user = Context.Guild.GetUser(p.Id);
                     if (user.VoiceChannel == null)
                     {
-                        _logger.Verbose("User {username} from server {guildName} reacted to my message but he is not in any channel.", user.Username, Context.Guild.Name);
+                        _logger.Verbose("User {username} from server {guildName} reacted to my message but he is not in any voice channel.", user.Username, Context.Guild.Name);
                         continue;
                     }
                     players.Add(user);
@@ -110,9 +125,11 @@ namespace AcmGamesBot.Commands
             int playersLen = players.Count;
             int k;
             IGuildUser tmp;
+            //Randomize players list
             while (playersLen > 1)
             {
                 k = rand.Next(playersLen--);
+                //Swap last player and selected index
                 tmp = players[playersLen];
                 players[playersLen] = players[k];
                 players[k] = tmp;
@@ -123,6 +140,8 @@ namespace AcmGamesBot.Commands
             var channelsCat = Context.Guild.CategoryChannels.First(c => c.Name.Equals(channelsCategory, StringComparison.OrdinalIgnoreCase))!;
             var voiceChannels = channelsCat.Channels.OfType<IVoiceChannel>().OrderBy(c => c.Position).ToArray()!;
             var lastCahannel = voiceChannels.Last();
+
+            //Move all players to last channel
             foreach (var p in players)
             {
                 if (p.VoiceChannel == lastCahannel) { continue; }
@@ -130,6 +149,7 @@ namespace AcmGamesBot.Commands
                 await p.ModifyAsync(prop => prop.Channel = new Optional<IVoiceChannel>(lastCahannel)).ConfigureAwait(false);
             }
 
+            //partition players into channels
             for (int i = 0; i < voiceChannels.Length - 1; i++)
             {
                 foreach (var p in players.Skip(i * groupSize).Take(groupSize))
@@ -138,6 +158,7 @@ namespace AcmGamesBot.Commands
                     await p.ModifyAsync(prop => prop.Channel = new Optional<IVoiceChannel>(voiceChannels[i])).ConfigureAwait(false);
                 }
             }
+
             _logger.Information("Partitioned {playersCount} in {server} into {channelsCount} channels for a game of {gameName}.",
             players.Count, Context.Guild.Name, Math.Min(voiceChannels.Length, Math.Ceiling(players.Count / (double)voiceChannels.Length)), gameName);
             await ReplyAsync("Enjoy !").ConfigureAwait(false);

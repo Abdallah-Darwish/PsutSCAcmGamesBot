@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace AcmGamesBot.Commands.Conditions
 {
+    /// <summary>
+    /// Checks if the command invoker has the required role to interact with this bot.
+    /// All invokers will pass if the role is null or whitespace.
+    /// </summary>
     public class CheckRoleAttribute : PreconditionAttribute
     {
         public override async Task<PreconditionResult> CheckPermissionsAsync(ICommandContext context, CommandInfo command, IServiceProvider services)

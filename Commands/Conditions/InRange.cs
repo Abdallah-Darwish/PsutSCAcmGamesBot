@@ -5,6 +5,9 @@ using ParameterInfo = Discord.Commands.ParameterInfo;
 
 namespace AcmGamesBot.Commands.Conditions
 {
+    /// <summary>
+    /// Checks if the parameter is a valid integer and is in range [Min, Max].
+    /// </summary>
     public class InRangeAttribute : ParameterPreconditionAttribute
     {
         private readonly int _min, _max;

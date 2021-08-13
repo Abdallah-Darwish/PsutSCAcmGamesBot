@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace AcmGamesBot.Commands
 {
+    /// <summary>
+    /// Will read all of the servers messages and invoke commands.
+    /// </summary>
     public class MessageHandler : IDisposable
     {
         private DiscordSocketClient? _client;
@@ -22,7 +25,9 @@ namespace AcmGamesBot.Commands
             _logger = logger;
             _diContainer = diContainer;
         }
-
+        /// <summary>
+        /// Adds a message listener to read servers messages and respond to commands.
+        /// </summary>
         private async Task InstallCommands(DiscordSocketClient client)
         {
             _client = client;
@@ -31,17 +36,24 @@ namespace AcmGamesBot.Commands
             var mods = await _commands.AddModulesAsync(Assembly.GetExecutingAssembly(), _diContainer).ConfigureAwait(false);
             foreach (var mod in mods)
             {
-                _logger.Information("Installed {modName} on {clientName}.", mod.Name, _client.CurrentUser?.Username ?? "[UNKNOWN USER]");
+                _logger.Information("Installed {moduleName} on {clientName}.", mod.Name, _client.CurrentUser?.Username ?? "[UNKNOWN USER]");
             }
             _client.MessageReceived += HandleCommandAsync;
             _commands.CommandExecuted += PostCommandExecution;
         }
+        /// <summary>
+        /// Creates a <see cref="MessageHandler"/> based on <paramref name="client"/> to read messages and execute commands.
+        /// </summary>
         public async static Task<MessageHandler> Create(DiscordSocketClient client)
         {
             var handler = Program.DIContainer.GetService<MessageHandler>()!;
             await handler.InstallCommands(client).ConfigureAwait(false);
             return handler;
         }
+
+        /// <summary>
+        /// Logs command execution result.
+        /// </summary>
         private async Task PostCommandExecution(Optional<CommandInfo> command, ICommandContext context, IResult result)
         {
             if (!result.IsSuccess)
@@ -54,7 +66,9 @@ namespace AcmGamesBot.Commands
                 _logger.Verbose("User {user} in {server} executed \"{cmd}\" successfully.", context.User.Username, context.Guild.Name, context.Message.Content);
             }
         }
-
+        /// <summary>
+        /// Listen to all messages and execute any commands.
+        /// </summary>
         private async Task HandleCommandAsync(SocketMessage messageParam)
         {
             // Don't process the command if it was a system message
@@ -67,7 +81,7 @@ namespace AcmGamesBot.Commands
             }
             if (message.Author.IsBot)
             {
-                _logger.Information("{botName} bot in {server} tried to contact me.", message.Author.Username, _client!.GetGuild(message.Reference.GuildId.Value).Name);
+                _logger.Information("{botName} bot in {server} tried to interact with me.", message.Author.Username, _client!.GetGuild(message.Reference.GuildId.Value).Name);
             }
             var context = new SocketCommandContext(_client, message);
 
@@ -98,6 +112,5 @@ namespace AcmGamesBot.Commands
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
-
     }
 }

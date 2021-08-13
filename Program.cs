@@ -46,8 +46,6 @@ namespace AcmGamesBot
             .AddTransient<MessageHandler>()
             .AddSingleton(st);
 
-            var x = new Emoji("\u2764");
-
             DIContainer = sc.BuildServiceProvider();
 
             try
@@ -69,6 +67,8 @@ namespace AcmGamesBot
             catch (Exception ex)
             {
                 logger.Fatal("{@ex}", ex);
+                Console.ReadLine();
+                return 1;
             }
             logger.Dispose();
             return 0;
