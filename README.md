@@ -42,3 +42,6 @@ You can type `!acm help` after adding the bot to your server to see its commands
 All values above are copied from "Serilog.Events.LogEventLevel" .
 - "Token" is your bot token so the program can connect to it.
 - "RequiredRole" is name of the role users should have to interact with this bot, if its null or empty then it will be ignored.
+
+## Screenshots
+TODO: add screenshots
