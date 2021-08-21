@@ -44,7 +44,7 @@ All values above are copied from "Serilog.Events.LogEventLevel" .
 - "RequiredRole" is name of the role users should have to interact with this bot, if its null or empty then it will be ignored.
 
 ## Screenshots
-![Help](https://github.com/Abdallah-Darwish/PsutSCAcmGamesBot/raw/main/AITickTackToe/Screenshots/Help.png)
-![Ping](https://github.com/Abdallah-Darwish/PsutSCAcmGamesBot/raw/main/AITickTackToe/Screenshots/Ping.png)
-![Unkown Command](https://github.com/Abdallah-Darwish/PsutSCAcmGamesBot/raw/main/AITickTackToe/Screenshots/UnkownCommand.png)
+![Help](https://github.com/Abdallah-Darwish/PsutSCAcmGamesBot/raw/main/Screenshots/Help.png)
+![Ping](https://github.com/Abdallah-Darwish/PsutSCAcmGamesBot/raw/main/Screenshots/Ping.png)
+![Unkown Command](https://github.com/Abdallah-Darwish/PsutSCAcmGamesBot/raw/main/Screenshots/UnkownCommand.png)
 TODO: add screenshots of logs and partition command
