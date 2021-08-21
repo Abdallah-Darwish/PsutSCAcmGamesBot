@@ -159,7 +159,7 @@ namespace AcmGamesBot.Commands
                 }
             }
 
-            _logger.Information("Partitioned {playersCount} in {server} into {channelsCount} channels for a game of {gameName}.",
+            _logger.Information("Partitioned {playersCount} players in {server} into {channelsCount} channels for a game of {gameName}.",
             players.Count, Context.Guild.Name, Math.Min(voiceChannels.Length, Math.Ceiling(players.Count / (double)voiceChannels.Length)), gameName);
             await ReplyAsync("Enjoy !").ConfigureAwait(false);
         }

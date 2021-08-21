@@ -1,0 +1,38 @@
+2021-08-21 04:12:15.715 +03:00 [INF] Also logging to AcmBotLogs.txt
+2021-08-21 04:12:15.811 +03:00 [INF] Starting the bot with Nzc3MjAwNTU0ODg2NTYxNzky.X6_-aw.WnKb6GaBcl8lRl2nTy7dV6ctb7w
+2021-08-21 04:12:15.866 +03:00 [INF] Connecting to server.
+2021-08-21 04:12:15.871 +03:00 [INF] Logging in.
+2021-08-21 04:12:15.877 +03:00 [INF] Discord.Net v2.4.0 (API v6)
+2021-08-21 04:12:15.882 +03:00 [INF] Connecting
+2021-08-21 04:12:16.511 +03:00 [DBG] GET users/@me: 596.31 ms
+2021-08-21 04:12:16.513 +03:00 [DBG] GET gateway: 596.71 ms
+2021-08-21 04:12:17.625 +03:00 [INF] Connected
+2021-08-21 04:12:17.718 +03:00 [INF] Installed acm on AcmGamesBot.
+2021-08-21 04:12:17.741 +03:00 [DBG] Connected to Hydroxychloroquine's server
+2021-08-21 04:12:18.127 +03:00 [INF] Ready
+2021-08-21 04:12:30.565 +03:00 [DBG] POST channels/776169437966368771/messages: 272.19 ms
+2021-08-21 04:12:30.605 +03:00 [INF] User Noradrenaline Junkie in Hydroxychloroquine's server asked for help, I replied with 3 commands.
+2021-08-21 04:12:30.612 +03:00 [VRB] User Noradrenaline Junkie in Hydroxychloroquine's server executed "!acm help" successfully.
+2021-08-21 04:15:08.141 +03:00 [ERR] Messgae "!acm  ping" from user Noradrenaline Junkie in Hydroxychloroquine's server caused the following error:
+"UnknownCommand": Unknown command.
+2021-08-21 04:15:08.519 +03:00 [DBG] POST channels/776169437966368771/messages: 370.55 ms
+2021-08-21 04:15:44.316 +03:00 [INF] Noradrenaline Junkie from Hydroxychloroquine's server pinged me.
+2021-08-21 04:15:44.597 +03:00 [DBG] POST channels/776169437966368771/messages: 278.94 ms
+2021-08-21 04:15:44.598 +03:00 [VRB] User Noradrenaline Junkie in Hydroxychloroquine's server executed "!acm ping" successfully.
+2021-08-21 04:16:25.273 +03:00 [INF] Noradrenaline Junkie from Hydroxychloroquine's server pinged me.
+2021-08-21 04:16:25.542 +03:00 [DBG] POST channels/776169437966368771/messages: 266.62 ms
+2021-08-21 04:16:25.544 +03:00 [VRB] User Noradrenaline Junkie in Hydroxychloroquine's server executed "!acm ping" successfully.
+2021-08-21 04:17:49.268 +03:00 [ERR] Messgae "!acm heeelllppp" from user Noradrenaline Junkie in Hydroxychloroquine's server caused the following error:
+"UnknownCommand": Unknown command.
+2021-08-21 04:17:49.546 +03:00 [DBG] POST channels/776169437966368771/messages: 277 ms
+2021-08-21 04:17:59.694 +03:00 [ERR] Messgae "!acm heeelp" from user Noradrenaline Junkie in Hydroxychloroquine's server caused the following error:
+"UnknownCommand": Unknown command.
+2021-08-21 04:18:00.063 +03:00 [DBG] POST channels/776169437966368771/messages: 367.69 ms
+2021-08-21 04:18:45.476 +03:00 [ERR] Messgae "!acm heelp" from user Noradrenaline Junkie in Hydroxychloroquine's server caused the following error:
+"UnknownCommand": Unknown command.
+2021-08-21 04:18:45.727 +03:00 [DBG] POST channels/776169437966368771/messages: 248.95 ms
+2021-08-21 04:25:09.035 +03:00 [INF] Uninstalled all modules from AcmGamesBot.
+2021-08-21 04:25:09.037 +03:00 [INF] Turning off AcmGamesBot bot.
+2021-08-21 04:25:09.083 +03:00 [INF] Disconnecting
+2021-08-21 04:25:09.094 +03:00 [DBG] Disconnected from Hydroxychloroquine's server
+2021-08-21 04:25:09.097 +03:00 [INF] Disconnected
