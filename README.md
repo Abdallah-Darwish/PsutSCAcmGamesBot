@@ -47,4 +47,6 @@ All values above are copied from "Serilog.Events.LogEventLevel" .
 ![Help](https://github.com/Abdallah-Darwish/PsutSCAcmGamesBot/raw/main/Screenshots/Help.png)
 ![Ping](https://github.com/Abdallah-Darwish/PsutSCAcmGamesBot/raw/main/Screenshots/Ping.png)
 ![Unkown Command](https://github.com/Abdallah-Darwish/PsutSCAcmGamesBot/raw/main/Screenshots/UnknownCommand.png)
-TODO: add screenshots of logs and partition command
+![BeforePartitioning](https://github.com/Abdallah-Darwish/PsutSCAcmGamesBot/raw/main/Screenshots/BeforePartitioning.png)
+![AfterPartitioning](https://github.com/Abdallah-Darwish/PsutSCAcmGamesBot/raw/main/Screenshots/AfterPartitioning.png)
+![Logs](https://github.com/Abdallah-Darwish/PsutSCAcmGamesBot/raw/main/Screenshots/Logs.png)
