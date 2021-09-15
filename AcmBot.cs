@@ -22,7 +22,7 @@ namespace AcmGamesBot
         private async Task Start(string token)
         {
             //printing token ! smort
-            _logger.Information("Starting the bot with {token}", token);
+            _logger.Information("Starting the bot");
             var config = new DiscordSocketConfig
             {
                 DefaultRetryMode = RetryMode.AlwaysRetry,
